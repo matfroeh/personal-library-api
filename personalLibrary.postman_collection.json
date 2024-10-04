@@ -1,0 +1,98 @@
+{
+	"info": {
+		"_postman_id": "1a1f3b98-624c-4046-be87-527239b3fd71",
+		"name": "personalLibrary",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38025458"
+	},
+	"item": [
+		{
+			"name": "books",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Ilias · Odyssee\",\r\n    \"author\": \"Homer, Johann Heinrich Voß\",\r\n    \"publisher\": \"dtv Verlagsgesellschaft mbH & Co. KG\",\r\n    \"publicationYear\": 2002,\r\n    \"isbn\": \"978-1805127307\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"firstName\": \"Walther\",\r\n        \"lastName\": \"von Stolzing\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readingList",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"_id\": \"[***BOOK_ID***]\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/[***USER_ID***]/readinglist/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"[***USER_ID***]",
+						"readinglist",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
