@@ -28,3 +28,21 @@ export const addBookToReadingList = asyncHandler(async (req, res) => {
   const updatedUser = await User.findById(id).populate({path: 'readingList'});
   res.status(201).json(updatedUser);
 });
+
+export const deleteBookFromReadingList = asyncHandler(async (req, res) => {
+    const params = req.params;
+    console.log(params);    
+    const {
+        params: { id, bookId },
+    } = req;
+
+    const userHasBook = await User.find({ _id: id, readingList: bookId }).countDocuments() > 0;
+    if (!userHasBook) throw new ErrorResponse(`User with id ${id} does not have book with id ${bookId} in their reading list`, 404);
+    const user = await User.findByIdAndUpdate(
+        id,
+        { $pull: { readingList: bookId } },
+    );
+    if (!user) throw new ErrorResponse("User not found", 404);
+    res.status(200).json(`Book with id ${bookId} has been removed from the reading list of user with id ${id}`);
+    });
+
