@@ -3,7 +3,7 @@ import ErrorResponse from '../utils/ErrorResponse.js';
 import User from '../models/userModel.js';
 
 export const getUsers = asyncHandler(async (req, res) => {
-  const users = await User.find();
+  const users = await User.find().populate("readingList");
   res.status(200).json(users);
 });
 
@@ -21,7 +21,7 @@ export const getUserById = asyncHandler(async (req, res) => {
   const {
     params: { id }
   } = req;
-  const user = await User.findById(id);
+  const user = await User.findById(id).populate("readingList");
   if (!user) throw new ErrorResponse('User not found', 404);
   res.status(200).json(user);
 });
